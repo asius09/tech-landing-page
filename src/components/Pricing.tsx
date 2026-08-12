@@ -1,102 +1,188 @@
 import React from 'react';
-import { Check } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Wallet, Calendar, PlayCircle, Timer, CircleDollarSign, ChevronDown, Zap, ChevronRight, Image as ImageLucide, Sparkles, ArrowDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+
+import { SectionHeader } from './SectionHeader';
+import { FadeIn } from './FadeIn';
 
 const PRICING_PLANS = [
   {
-    name: "Starter",
-    price: "$29",
-    period: "/month",
-    description: "Perfect for independent agents just getting started with video marketing.",
-    features: [
-      "10 AI Video Generations/mo",
-      "Standard Templates",
-      "720p Export Quality",
-      "Email Support"
-    ],
-    highlighted: false,
-    buttonText: "Start Free Trial"
+    id: 'payg',
+    label: 'ONE-TIME CREDITS',
+    title: 'Pay as you go',
+    price: '$25',
+    period: '/per image',
+    credits: '1,000 credits',
+    perImageCost: 'Per Image $1.50',
+    videos: 'Videos 8',
+    iconBg: 'bg-primary-100',
+    iconColor: 'text-primary-400',
+    labelColor: 'text-primary-400',
+    priceColor: 'text-primary-400',
+    buttonColor: 'bg-primary-400 hover:bg-primary-500',
+    buttonShadow: 'shadow-orange-200',
+    cardBorder: 'border-2 border-card-border',
+    cardBg: 'bg-card-light',
+    infoBg: 'bg-primary-100',
+    infoBorder: 'border-primary-200',
+    Icon: Wallet,
+    isPopular: false,
+    delay: 0.2
   },
   {
-    name: "Professional",
-    price: "$99",
-    period: "/month",
-    description: "Ideal for growing agencies looking to scale their content creation.",
-    features: [
-      "Unlimited AI Video Generations",
-      "Premium Custom Templates",
-      "4K Ultra HD Export Quality",
-      "Priority 24/7 Support",
-      "Custom Branding & Watermarks"
-    ],
-    highlighted: true,
-    buttonText: "Get Professional"
+    id: 'monthly',
+    label: 'MONTHLY CREDITS',
+    title: 'Monthly',
+    price: '$199',
+    period: '/per month',
+    credits: '1,000 credits',
+    perImageCost: 'Per Image $1.50',
+    videos: 'Videos 8',
+    iconBg: 'bg-secondary-50 border border-secondary-100',
+    iconColor: 'text-brand-purple',
+    labelColor: 'text-brand-purple',
+    priceColor: 'text-brand-purple',
+    buttonColor: 'bg-brand-purple hover:bg-brand-purple-hover',
+    buttonShadow: 'shadow-fuchsia-200',
+    cardBorder: 'border-[3px] border-brand-purple',
+    cardBg: 'bg-white',
+    infoBg: 'bg-surface-purple',
+    infoBorder: 'border-purple-100',
+    Icon: Calendar,
+    isPopular: true,
+    delay: 0.4
+  }
+];
+
+const FEATURES = [
+  {
+    id: 'made-from-images',
+    text: <>Made from<br />images</>,
+    iconNode: (
+      <div className="relative mb-3 flex items-center justify-center">
+        <ImageLucide className="w-9 h-9 text-black stroke-2" />
+        <Sparkles className="absolute -top-1 -right-2 w-4 h-4 text-brand-purple fill-brand-purple" />
+      </div>
+    )
+  },
+  {
+    id: 'no-editing',
+    text: <>No editing skills<br />required</>,
+    iconNode: (
+      <div className="w-11 h-11 border-[2.5px] border-black rounded-[0.9rem] flex items-center justify-center mb-3 shadow-sm">
+        <PlayCircle className="w-5 h-5 text-black stroke-[2.5] ml-0.5" />
+      </div>
+    )
+  },
+  {
+    id: 'create-fast',
+    text: <>Create in 5<br />minutes</>,
+    iconNode: (
+      <div className="relative mb-4 flex items-center justify-center mt-1">
+        <Timer className="w-9 h-9 text-black stroke-2" />
+        <div className="absolute top-1 -left-4 flex flex-col space-y-1">
+          <div className="w-3.5 h-0.75 bg-brand-purple rounded-full" />
+          <div className="w-2.5 h-0.75 bg-brand-purple rounded-full ml-1" />
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'low-cost',
+    text: <>Just $1.50 per<br />image</>,
+    iconNode: (
+      <div className="flex flex-col items-center mb-3 relative">
+        <ArrowDown className="w-5 h-5 text-brand-purple stroke-3 absolute -top-5" />
+        <CircleDollarSign className="w-9 h-9 text-black stroke-2" />
+      </div>
+    )
   }
 ];
 
 export function Pricing() {
   return (
-    <section className="w-full py-20 bg-background relative overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
+    <section id="pricing" className="w-full py-24 bg-white relative">
+      <div className="container px-4 md:px-8 max-w-5xl mx-auto">
+        
+        {/* Header */}
+        <FadeIn>
+          <SectionHeader 
+            title="Credit Plans"
+            subtitle="Choose the plan that works best for you and your team."
+          />
+        </FadeIn>
 
-      <div className="container px-4 md:px-8 max-w-screen-xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Choose Plans</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Simple, transparent pricing that grows with your real estate business. No hidden fees.
-          </p>
-        </div>
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto mb-20">
+          {PRICING_PLANS.map((plan) => (
+            <FadeIn key={plan.id} delay={plan.delay} direction="up" className="w-full">
+              <div className={`w-full h-full rounded-[2.5rem] ${plan.cardBg} ${plan.cardBorder} p-8 md:p-10 flex flex-col relative shadow-sm`}>
+                
+                {plan.isPopular && (
+                  <div 
+                    className="absolute top-[-1.1rem] right-8 bg-brand-purple text-white font-bold text-[11px] uppercase tracking-widest pt-2 pb-5 px-5 flex flex-col items-center text-center leading-tight shadow-md z-10" 
+                    style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)"}}
+                  >
+                    BEST<br />VALUE
+                  </div>
+                )}
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 max-w-5xl mx-auto">
-          {PRICING_PLANS.map((plan, idx) => (
-            <Card 
-              key={idx} 
-              className={`flex flex-col w-full max-w-md transition-transform hover:-translate-y-2 ${
-                plan.highlighted 
-                  ? 'bg-foreground text-background shadow-2xl scale-105 md:scale-110 z-10 border-2 border-primary' 
-                  : 'bg-accent/40 border border-border shadow-md'
-              }`}
-            >
-              <CardHeader className="pb-8">
-                <CardTitle className={`text-xl mb-2 ${plan.highlighted ? 'text-primary-foreground' : ''}`}>{plan.name}</CardTitle>
-                <CardDescription className={`mb-6 ${plan.highlighted ? 'text-background/80' : ''}`}>
-                  {plan.description}
-                </CardDescription>
-                <div className="flex items-baseline">
-                  <span className="text-5xl font-extrabold">{plan.price}</span>
-                  <span className={`ml-2 font-medium ${plan.highlighted ? 'text-background/80' : 'text-muted-foreground'}`}>{plan.period}</span>
+                <div className="flex items-center space-x-4 mb-8">
+                  <div className={`w-12 h-12 ${plan.iconBg} rounded-xl flex items-center justify-center`}>
+                    <plan.Icon className={`w-6 h-6 ${plan.iconColor} stroke-2`} />
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <p className={`${plan.labelColor} font-bold text-[10px] tracking-widest uppercase mb-1`}>{plan.label}</p>
+                    <h3 className="text-black font-bold text-2xl tracking-tight">{plan.title}</h3>
+                  </div>
                 </div>
-              </CardHeader>
+                
+                <div className="flex items-baseline mb-6">
+                  <span className={`text-5xl font-bold ${plan.priceColor}`}>{plan.price}</span>
+                  <span className="text-gray-800 font-bold text-[13px] ml-2">{plan.period}</span>
+                </div>
 
-              <CardContent className="flex-1 pb-8">
-                <ul className="space-y-4">
-                  {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start">
-                      <Check className={`w-5 h-5 mr-3 flex-shrink-0 ${plan.highlighted ? 'text-primary' : 'text-primary'}`} />
-                      <span className={plan.highlighted ? 'text-background/90' : 'text-foreground/80'}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <div className={`w-full bg-white border ${plan.isPopular ? 'border-brand-purple' : 'border-gray-200'} rounded-xl px-4 py-3.5 flex items-center justify-between mb-6 shadow-sm cursor-pointer hover:border-gray-300 transition-colors`}>
+                  <div className="flex items-center text-gray-700 font-bold text-[13px]">
+                    <Zap className="w-4 h-4 mr-2" />
+                    {plan.credits}
+                  </div>
+                  <ChevronDown className="w-4 h-4 text-gray-500" />
+                </div>
 
-              <CardFooter>
-                <Button 
-                  size="lg"
-                  className={`w-full rounded-xl font-bold ${
-                    plan.highlighted 
-                      ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                      : 'bg-background text-foreground border border-border hover:bg-accent'
-                  }`}
-                >
-                  {plan.buttonText}
-                </Button>
-              </CardFooter>
-            </Card>
+                <div className={`w-full ${plan.infoBg} rounded-xl p-5 flex mb-8`}>
+                  <div className={`flex-1 flex flex-col items-center justify-center border-r ${plan.infoBorder}`}>
+                    <ImageLucide className="w-6 h-6 text-black mb-2 stroke-[1.5]" />
+                    <span className="text-xs font-bold text-black">{plan.perImageCost}</span>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center justify-center">
+                    <PlayCircle className="w-6 h-6 text-black mb-2 stroke-[1.5]" />
+                    <span className="text-xs font-bold text-black">{plan.videos}</span>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-4">
+                  <Button className={`w-full rounded-full ${plan.buttonColor} text-white font-bold h-14 text-base shadow-lg ${plan.buttonShadow}`}>
+                    Get Started For Free <ChevronRight className="w-5 h-5 ml-1" />
+                  </Button>
+                </div>
+              </div>
+            </FadeIn>
           ))}
         </div>
+
+        {/* Feature Bottom Row */}
+        <div className="w-full max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-4">
+          {FEATURES.map((feature) => (
+            <div key={feature.id} className="flex flex-col items-center text-center">
+              {feature.iconNode}
+              <span className="font-bold text-[14px] text-black leading-tight">
+                {feature.text}
+              </span>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

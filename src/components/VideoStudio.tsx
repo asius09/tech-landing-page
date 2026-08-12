@@ -1,63 +1,62 @@
 import React from 'react';
 import Image from 'next/image';
-import { PlayCircle, Video, Wand2 } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-
-const TEMPLATES_DATA = [
-  { title: "Property Tours", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" },
-  { title: "Neighborhood Guides", image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=800&q=80" },
-  { title: "Agent Intros", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
-  { title: "Market Updates", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" },
-];
+import { SectionHeader } from './SectionHeader';
+import { FadeIn } from './FadeIn';
 
 export function VideoStudio() {
   return (
-    <section className="w-full py-20 bg-background">
-      <div className="container px-4 md:px-8 max-w-screen-xl mx-auto">
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-6 px-3 py-1 bg-secondary/10 text-secondary hover:bg-secondary/20">
-            <Wand2 className="w-4 h-4 mr-2" />
-            AI Marketing Studio
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Your Ideas with AI Marketing Studio</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Choose from hundreds of templates or let our AI generate a custom video tailored to your specific listing and target audience.
-          </p>
-        </div>
+    <section className="w-full py-24 bg-white relative">
+      <div className="container px-4 md:px-8 max-w-5xl mx-auto flex flex-col items-center">
+        
+        {/* Header */}
+        <FadeIn>
+          <SectionHeader 
+            title={<>Ready-to-Use <br />Video Templates</>}
+            subtitle="Choose from hundreds of premium, professionally designed templates to create your next video in minutes."
+          />
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {TEMPLATES_DATA.map((template, idx) => (
-            <div key={idx} className="group relative rounded-xl overflow-hidden aspect-[3/4] cursor-pointer">
-              <Image src={template.image} alt={template.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6 w-full">
-                <h3 className="text-background font-semibold text-lg flex items-center justify-between">
-                  {template.title}
-                  <PlayCircle className="w-6 h-6 text-background/80 group-hover:text-background transition-colors" />
-                </h3>
-              </div>
+        {/* Aspect Ratio Toggles */}
+        <FadeIn delay={0.1}>
+          <div className="inline-flex bg-gray-50 rounded-full p-1 mb-8">
+            <div className="px-6 py-2 rounded-full bg-white shadow-sm text-sm font-bold border border-gray-100 cursor-pointer">
+              Horizontal
             </div>
-          ))}
-        </div>
-
-        <div className="bg-accent/40 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between border border-primary/10">
-          <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready-to-Use Video Templates</h3>
-            <p className="text-muted-foreground mb-6">
-              Skip the editing timeline. Simply input your property details and photos, and Reelmatic creates a polished, ready-to-share video in seconds.
-            </p>
-            <Button size="lg" className="rounded-full">
-              <Video className="w-4 h-4 mr-2" />
-              Explore Templates
-            </Button>
-          </div>
-          <div className="md:w-1/2 relative w-full">
-            <div className="aspect-video bg-background rounded-xl border shadow-xl overflow-hidden relative">
-               <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Dashboard" fill className="object-cover opacity-90" />
+            <div className="px-6 py-2 rounded-full text-sm font-bold text-gray-500 cursor-pointer hover:text-black transition-colors">
+              Vertical
+            </div>
+            <div className="px-6 py-2 rounded-full text-sm font-bold text-gray-500 cursor-pointer hover:text-black transition-colors">
+              Square
             </div>
           </div>
-        </div>
+        </FadeIn>
+
+        {/* Video Template Frame */}
+        <FadeIn delay={0.2} direction="up" className="w-full">
+          <div className="w-full rounded-[3rem] p-1.5 md:p-2 shadow-2xl relative overflow-hidden bg-linear-to-tr from-secondary-200 via-white to-primary-100">
+           <div className="w-full aspect-16/11 md:aspect-video rounded-[2.5rem] overflow-hidden relative">
+             {/* The Image from the screenshot (woman looking at laptop editing video) */}
+             <Image src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Video editing template" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+             
+             {/* Play Icon and Text Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg className="w-20 h-20 text-white drop-shadow-xl mb-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                <span className="text-white font-bold text-lg md:text-xl drop-shadow-md">See how easy it is</span>
+             </div>
+           </div>
+          </div>
+        </FadeIn>
+        
+        <FadeIn delay={0.3}>
+          <div className="mt-8">
+             <button className="flex items-center text-sm font-bold hover:text-primary-500 transition-colors">
+               Explore all templates
+             </button>
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );
