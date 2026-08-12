@@ -1,22 +1,24 @@
 import React from 'react';
 import { PlayCircle, Video, Wand2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+const TEMPLATES_DATA = [
+  { title: "Property Tours", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" },
+  { title: "Neighborhood Guides", image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=800&q=80" },
+  { title: "Agent Intros", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
+  { title: "Market Updates", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" },
+];
 
 export function VideoStudio() {
-  const templates = [
-    { title: "Property Tours", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" },
-    { title: "Neighborhood Guides", image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=800&q=80" },
-    { title: "Agent Intros", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
-    { title: "Market Updates", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" },
-  ];
-
   return (
     <section className="w-full py-20 bg-background">
       <div className="container px-4 md:px-8 max-w-screen-xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-sm text-secondary font-medium mb-6">
+          <Badge variant="secondary" className="mb-6 px-3 py-1 bg-secondary/10 text-secondary hover:bg-secondary/20">
             <Wand2 className="w-4 h-4 mr-2" />
             AI Marketing Studio
-          </div>
+          </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Your Ideas with AI Marketing Studio</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Choose from hundreds of templates or let our AI generate a custom video tailored to your specific listing and target audience.
@@ -24,7 +26,7 @@ export function VideoStudio() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {templates.map((template, idx) => (
+          {TEMPLATES_DATA.map((template, idx) => (
             <div key={idx} className="group relative rounded-xl overflow-hidden aspect-[3/4] cursor-pointer">
               <img src={template.image} alt={template.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -44,10 +46,10 @@ export function VideoStudio() {
             <p className="text-muted-foreground mb-6">
               Skip the editing timeline. Simply input your property details and photos, and Reelmatic creates a polished, ready-to-share video in seconds.
             </p>
-            <button className="px-6 py-3 bg-foreground text-background rounded-full font-medium hover:bg-foreground/90 transition-colors flex items-center">
+            <Button size="lg" className="rounded-full">
               <Video className="w-4 h-4 mr-2" />
               Explore Templates
-            </button>
+            </Button>
           </div>
           <div className="md:w-1/2 relative w-full">
             <div className="aspect-video bg-background rounded-xl border shadow-xl overflow-hidden">

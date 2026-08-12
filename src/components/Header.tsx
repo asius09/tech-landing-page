@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { Button } from "@/components/ui/button";
+
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -19,13 +21,13 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2 sm:space-x-4">
-          <nav className="flex items-center space-x-1">
-            <Link href="/login" className="px-4 py-2 text-sm font-medium transition-colors hover:text-primary">
-              Log in
-            </Link>
-            <Link href="/signup" className="hidden sm:flex px-4 py-2 text-sm font-medium text-primary-foreground bg-primary rounded-md hover:bg-primary/90 transition-colors">
-              Sign up
-            </Link>
+          <nav className="flex items-center space-x-2">
+            <Button variant="ghost" asChild>
+              <Link href="/login">Log in</Link>
+            </Button>
+            <Button className="hidden sm:inline-flex" asChild>
+              <Link href="/signup">Sign up</Link>
+            </Button>
           </nav>
         </div>
       </div>

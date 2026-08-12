@@ -1,6 +1,9 @@
 import React from 'react';
 import { Play } from 'lucide-react';
 
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
 export function Hero() {
   return (
     <section className="relative w-full py-20 md:py-32 overflow-hidden flex flex-col items-center justify-center text-center px-4">
@@ -8,10 +11,10 @@ export function Hero() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="z-10 flex flex-col items-center max-w-4xl mx-auto space-y-6">
-        <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm text-primary font-medium">
+        <Badge variant="glass" className="px-3 py-1">
           <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
           AI Video Creation
-        </div>
+        </Badge>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
           Transforming real <br className="hidden sm:block" />
@@ -23,9 +26,9 @@ export function Hero() {
         </p>
         
         <div className="flex items-center space-x-4 pt-4">
-          <button className="px-8 py-4 bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
+          <Button size="lg" variant="secondary" className="font-semibold px-8 rounded-full">
             Start Free Trial
-          </button>
+          </Button>
         </div>
       </div>
 
