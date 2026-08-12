@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 export function Footer() {
   return (
@@ -17,11 +17,11 @@ export function Footer() {
               The AI-powered video marketing studio built exclusively for modern real estate professionals.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-background/60 hover:text-background transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors"><Youtube className="w-5 h-5" /></a>
+              <a href="#" className="text-background/60 hover:text-background transition-colors"><FaFacebook className="w-5 h-5" /></a>
+              <a href="#" className="text-background/60 hover:text-background transition-colors"><FaTwitter className="w-5 h-5" /></a>
+              <a href="#" className="text-background/60 hover:text-background transition-colors"><FaInstagram className="w-5 h-5" /></a>
+              <a href="#" className="text-background/60 hover:text-background transition-colors"><FaLinkedin className="w-5 h-5" /></a>
+              <a href="#" className="text-background/60 hover:text-background transition-colors"><FaYoutube className="w-5 h-5" /></a>
             </div>
           </div>
           
