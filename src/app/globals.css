@@ -1,63 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  --color-background: #ffffff;
+  --color-foreground: #09090b;
+  --color-primary: #f97316;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #d946ef;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #71717a;
+  --color-accent: #fdf4ff;
+  --color-accent-foreground: #09090b;
+  --color-border: #e4e4e7;
+  --color-pastel-pink: #fff0f6;
+  --color-pastel-yellow: #fffdf2;
+  
+  /* Extracted Component Colors */
+  --color-brand-purple: #aa00ff;
+  --color-brand-purple-hover: #8f00db;
+  --color-brand-fuchsia: #fc2cff;
+  --color-brand-orange: #ff9345;
+  --color-brand-magenta: #e81cff;
+  --color-brand-pink: #ff0080;
+  
+  /* Semantic Theme Tokens */
+  --color-primary-50: var(--color-orange-50);
+  --color-primary-100: var(--color-orange-100);
+  --color-primary-200: var(--color-orange-200);
+  --color-primary-300: var(--color-orange-300);
+  --color-primary-400: var(--color-orange-400);
+  --color-primary-500: var(--color-orange-500);
+  --color-primary-600: var(--color-orange-600);
+
+  --color-secondary-50: var(--color-fuchsia-50);
+  --color-secondary-100: var(--color-fuchsia-100);
+  --color-secondary-200: var(--color-fuchsia-200);
+  --color-secondary-500: var(--color-fuchsia-500);
+  --color-secondary-600: var(--color-fuchsia-600);
+
+  --color-accent-50: var(--color-pink-50);
+  --color-accent-100: var(--color-pink-100);
+  
+  --color-surface-purple: var(--color-purple-50);
+  --color-surface-yellow: var(--color-yellow-50);
+  
+  --color-purple-50: #f8f5ff;
+  --color-purple-100: #e8dfff;
+  --color-purple-200: #e9e6fb;
+  --color-purple-300: #f3f1fd;
+  
+  --color-yellow-50: #fff8e7;
+  --color-pink-50: #fef0fa;
+  --color-orange-50: #fff0e6;
+  --color-orange-100: #fdecdb;
+  --color-orange-200: #f5d9c2;
+  
+  --color-card-light: #fffbf7;
+  --color-card-border: #ffe8d6;
+  
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
   --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #020817;
-  --primary: #a855f7; /* Purple for branding */
-  --primary-foreground: #f8fafc;
-  --secondary: #f97316; /* Orange for CTA */
-  --secondary-foreground: #f8fafc;
-  --accent: #fdf4ff; /* Light purple/pink background areas */
-  --accent-foreground: #020817;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #a855f7;
-  --radius: 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020817;
-    --foreground: #f8fafc;
-    --primary: #c084fc;
-    --primary-foreground: #020817;
-    --secondary: #fb923c;
-    --secondary-foreground: #020817;
-    --accent: #2e1065;
-    --accent-foreground: #f8fafc;
-    --muted: #0f172a;
-    --muted-foreground: #94a3b8;
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #c084fc;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
 }
