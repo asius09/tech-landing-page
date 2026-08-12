@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { PlayCircle, Video, Wand2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -28,12 +29,12 @@ export function VideoStudio() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {TEMPLATES_DATA.map((template, idx) => (
             <div key={idx} className="group relative rounded-xl overflow-hidden aspect-[3/4] cursor-pointer">
-              <img src={template.image} alt={template.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <Image src={template.image} alt={template.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
               <div className="absolute bottom-0 left-0 p-6 w-full">
-                <h3 className="text-white font-semibold text-lg flex items-center justify-between">
+                <h3 className="text-background font-semibold text-lg flex items-center justify-between">
                   {template.title}
-                  <PlayCircle className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
+                  <PlayCircle className="w-6 h-6 text-background/80 group-hover:text-background transition-colors" />
                 </h3>
               </div>
             </div>
@@ -52,8 +53,8 @@ export function VideoStudio() {
             </Button>
           </div>
           <div className="md:w-1/2 relative w-full">
-            <div className="aspect-video bg-background rounded-xl border shadow-xl overflow-hidden">
-               <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Dashboard" className="w-full h-full object-cover opacity-90" />
+            <div className="aspect-video bg-background rounded-xl border shadow-xl overflow-hidden relative">
+               <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Dashboard" fill className="object-cover opacity-90" />
             </div>
           </div>
         </div>

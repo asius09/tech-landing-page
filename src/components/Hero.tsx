@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 import { Button } from "@/components/ui/button";
@@ -34,13 +35,14 @@ export function Hero() {
 
       <div className="relative w-full max-w-5xl mx-auto mt-16 z-10">
         <div className="aspect-video bg-muted rounded-2xl overflow-hidden border border-border shadow-2xl relative flex items-center justify-center group cursor-pointer">
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
             alt="Real estate preview" 
-            className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
+            fill
+            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
           />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-          <div className="absolute bg-white/90 p-4 rounded-full shadow-lg transform group-hover:scale-110 transition-transform">
+          <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/10 transition-colors" />
+          <div className="absolute bg-background/90 p-4 rounded-full shadow-lg transform group-hover:scale-110 transition-transform">
             <Play className="w-8 h-8 text-primary ml-1" />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 const TESTIMONIALS_DATA = [
@@ -37,8 +38,8 @@ export function Testimonials() {
           {TESTIMONIALS_DATA.map((review, idx) => (
             <Card key={idx} className="flex flex-col items-center text-center">
               <CardHeader className="pb-2">
-                <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto border-2 border-primary/20">
-                  <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
+                <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto border-2 border-primary/20 relative">
+                  <Image src={review.avatar} alt={review.name} fill className="object-cover" />
                 </div>
                 <CardTitle className="text-lg">{review.name}</CardTitle>
                 <CardDescription className="text-primary font-medium">{review.role}</CardDescription>
